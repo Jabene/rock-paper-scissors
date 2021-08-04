@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css" type="text/css">
+  </head>
+  <body>
+    <section class="log-in-page" id="log-in">
+      <div class="log-in-rock"><img src="./assets/rock-log-in.png" /></div>
+      <div class="log-in-paper">
+        <h1>LOG-IN</h1>
+        <input type="text" placeholder="ENTER YOUR NAME" />
+        <h2>Choose your icon:</h2>
+        <div id="icon-row">
+          <button class="icons">🥷</button>
+          <button class="icons">🧞‍</button>
+          <button class="icons">🧚‍♂️</button>
+          <button class="icons">‍😀</button>
+          <button class="icons">🙃</button>
+          <button class="icons">😜</button>
+          <button class="icons">🤓</button>
+        </div>
+      </div>
+      <div class="log-in-scissors"><img src="./assets/scissors-log-in.png" /><div>
+    </section>
+    <aside class="hidden player" id="left-aside">
+      <p id="users-icon"></p>
+      <p id="users-name">Human</p>
+      <p>Wins: 0</p>
+    </aside>
+    <main class="hidden" id="main-section">
+      <header>
+        <h1>Rock, Paper, Scissors</h1>
+        <h3>Choose your game!</h3>
+      </header>
+      <section class="game-section">
+        <button>
+          <h3>🪨Classic📄</h3>
+          <p>rock > scissors</p>
+          <p>paper > rock</p>
+          <p>scissors > paper</p>
+        </button>
+        <button>
+          <h3>🪨Classic📄</h3>
+          <p>rock > scissors</p>
+          <p>paper > rock</p>
+          <p>scissors > paper</p>
+        </button>
+      </section>
+    </main>
+    <aside class="hidden opponent" id="right-aside">
+      <p>👾</p>
+      <p>Computer</p>
+      <p>Wins: 0</p>
+    </aside>
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="player.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
