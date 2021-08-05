@@ -3,6 +3,8 @@ var playerIcon = document.querySelector('#icon-row');
 var classicFighterSelect = document.querySelector('.select-fighter');
 var classicGameButton = document.getElementById('classic-game');
 var otherGameButton = document.getElementById('other-game');
+var changeGameButton = document.getElementById('change-game');
+var resetUserButton = document.getElementById('reset-user');
 
 var opponent;
 var currentPlayer;
@@ -13,6 +15,9 @@ playerIcon.onclick = logIn;
 classicGameButton.onclick = classicGame;
 classicFighterSelect.onclick = runClassicGame;
 otherGameButton.onclick = otherGame;
+changeGameButton.onclick = returningPlayer;
+resetUserButton.onclick = resetData;
+
 
 
 returningPlayer();
@@ -26,10 +31,6 @@ function show(node) {
 function hide(node) {
   node.classList.add('hidden');
 }
-
-// function getRandomIndex(array) {
-//   return Math.floor(Math.random() * array.length);
-// }
 
 
 
@@ -51,16 +52,32 @@ function returningPlayer() {
     document.getElementById('users-name').innerText = currentPlayer.name;
     document.getElementById('users-icon').innerText = currentPlayer.icon;
     hide(document.getElementById('log-in'))
+    hide(document.querySelector('.select-fighter'))
+    show(document.getElementById('classic-game'))
+    show(document.getElementById('other-game'))
     show(document.querySelector('#left-aside'))
     show(document.querySelector('#right-aside'))
     show(document.querySelector('#main-section'))
   }
 }
 
+function changeGame() {
+  currentPlayer.saveWinsToStorage();
+  opponent.saveWinsToStorage();
+  document.getElementById('instructions').innerText = "Choose your game!";
+  returningPlayer();
+}
+
+function resetData() {
+  var verifyChoice = window.confirm('Are you sure?')
+  if (verifyChoice === true) {
+    localStorage.clear();
+    location.reload();
+  }
+}
 
 
 function classicGame(e) {
-  // e.preventDefault();
   hide(document.getElementById('classic-game'));
   hide(document.getElementById('other-game'));
   hide(document.querySelector('.fighter-arena'));
@@ -75,8 +92,6 @@ function runClassicGame(e) {
   hide(document.querySelector('.select-fighter'));
   show(document.querySelector('.fighter-arena'));
   opponentInterval = setInterval(function() {classicGameRunning.classicOpponentFighter()}, 250);
-  var winner = classicGameRunning.classicGame();
-
 }
 
 function selectFighter(selection) {
@@ -87,8 +102,23 @@ function selectFighter(selection) {
   }
 }
 
-function determineWinner(playerChoice, opponentChoice) {
+function displayOpponentChoice(icon) {
+  document.getElementById('opponent-fighter').innerHTML = `${icon}`;
+}
 
+function determineWinner(wld) {
+  console.log(wld);
+  if (wld === "win") {
+    document.getElementById('instructions').innerText = "You Win!";
+    currentPlayer.wins++;
+    document.getElementById('player-wins').innerText = `Wins: ${currentPlayer.wins}`;
+  } else if (wld === "lose") {
+    document.getElementById('instructions').innerText = "You lose!";
+    opponent.wins++;
+    document.getElementById('opponent-wins').innerText = `Wins: ${opponent.wins}`;
+  } else {
+    document.getElementById('instructions').innerText = "Draw!";
+  }
 }
 
 function otherGame(e) {
