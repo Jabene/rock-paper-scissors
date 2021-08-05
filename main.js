@@ -7,7 +7,7 @@ var otherGameButton = document.getElementById('other-game');
 var opponent;
 var currentPlayer;
 var classicGameRunning;
-
+var opponentInterval;
 
 playerIcon.onclick = logIn;
 classicGameButton.onclick = classicGame;
@@ -72,10 +72,11 @@ function runClassicGame(e) {
   classicGameRunning = new Game(e.target.id);
   selectFighter(e.target.id);
   classicGameRunning.classicOpponentFighter();
-  determineWinner(e.target.id, );
   hide(document.querySelector('.select-fighter'));
   show(document.querySelector('.fighter-arena'));
-  setTimeout(classicGame, 3000)
+  opponentInterval = setInterval(function() {classicGameRunning.classicOpponentFighter()}, 250);
+  var winner = classicGameRunning.classicGame();
+
 }
 
 function selectFighter(selection) {
@@ -87,7 +88,7 @@ function selectFighter(selection) {
 }
 
 function determineWinner(playerChoice, opponentChoice) {
-  
+
 }
 
 function otherGame(e) {

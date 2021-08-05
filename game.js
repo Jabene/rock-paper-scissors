@@ -13,16 +13,27 @@ class Game {
     this.selectedFighter = playerFighter;
     this.player = currentPlayer;
     this.opponent = opponent;
+    this.interval = 0;
   }
   classicGame(){
+    if (this.player.fighter === "classic-rock"
+        && this.opponent.fighter === "classic-paper" ) {
 
+        }
   }
   getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
   }
   classicOpponentFighter() {
     var randomIndex = this.classicFighters[this.getRandomIndex(this.classicFighters)];
+    opponent.fighter = randomIndex;
     document.getElementById('opponent-fighter').innerHTML = `${randomIndex.icon}`;
-    return randomIndex.name;
+    this.interval++;
+    if (this.interval === 10) {
+      clearTimeout(opponentInterval);
+      setTimeout(classicGame, 3000)
+      return randomIndex.name;
+    }
+
   }
 }
