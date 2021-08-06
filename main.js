@@ -6,8 +6,8 @@ var otherGameButton = document.getElementById('other-game');
 var changeGameButton = document.getElementById('change-game');
 var resetUserButton = document.getElementById('reset-user');
 
-var opponent;
-var currentPlayer;
+var opponent = new Player();
+var currentPlayer = new Player();
 var classicGameRunning;
 var opponentInterval;
 
@@ -38,19 +38,24 @@ function logIn(e) {
   e.preventDefault();
   var usersName = document.querySelector('input').value || "Stranger";
   var usersIcon = event.target.innerText;
-  localStorage.setItem('player', JSON.stringify(new Player(usersName, usersIcon)));
-  localStorage.setItem('opponent', JSON.stringify(new Player()))
+  currentPlayer.name = usersName;
+  currentPlayer.icon = usersIcon;
+  localStorage.setItem('player', JSON.stringify(currentPlayer));
+  localStorage.setItem('opponent', JSON.stringify(opponent))
   returningPlayer();
 }
 
 function returningPlayer() {
   if (localStorage.player) {
-    var returnedPlayer = localStorage.getItem('player');
-    currentPlayer = JSON.parse(returnedPlayer);
-    var returnedOpponent = localStorage.getItem('opponent');
-    opponent = JSON.parse(returnedOpponent);
+    var returnedPlayer = JSON.parse(localStorage.getItem('player'));
+    currentPlayer = new Player(returnedPlayer.name, returnedPlayer.icon, returnedPlayer.wins);
+    var returnedOpponent = JSON.parse(localStorage.getItem('opponent'));
+    opponent = new Player("Computer", "👾", returnedOpponent.wins);
+    console.log(currentPlayer)
     document.getElementById('users-name').innerText = currentPlayer.name;
     document.getElementById('users-icon').innerText = currentPlayer.icon;
+    document.getElementById('player-wins').innerText = `Wins: ${currentPlayer.wins}`;
+    document.getElementById('opponent-wins').innerText = `Wins: ${opponent.wins}`;
     hide(document.getElementById('log-in'))
     hide(document.querySelector('.select-fighter'))
     show(document.getElementById('classic-game'))
@@ -83,6 +88,10 @@ function classicGame(e) {
   hide(document.querySelector('.fighter-arena'));
   show(document.querySelector('.select-fighter'));
   document.getElementById('instructions').innerText = "Select your fighter!";
+  document.getElementById('player-wins').innerText = `Wins: ${currentPlayer.wins}`;
+  document.getElementById('opponent-wins').innerText = `Wins: ${opponent.wins}`;
+  currentPlayer.saveWinsToStorage();
+  opponent.saveWinsToStorage();
 }
 
 function runClassicGame(e) {
@@ -111,10 +120,12 @@ function determineWinner(wld) {
   if (wld === "win") {
     document.getElementById('instructions').innerText = "You Win!";
     currentPlayer.wins++;
+    currentPlayer.saveWinsToStorage();
     document.getElementById('player-wins').innerText = `Wins: ${currentPlayer.wins}`;
   } else if (wld === "lose") {
     document.getElementById('instructions').innerText = "You lose!";
     opponent.wins++;
+    opponent.saveWinsToStorage();
     document.getElementById('opponent-wins').innerText = `Wins: ${opponent.wins}`;
   } else {
     document.getElementById('instructions').innerText = "Draw!";

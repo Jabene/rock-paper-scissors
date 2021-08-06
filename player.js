@@ -1,10 +1,11 @@
 class Player {
-  constructor(name, icon) {
+  constructor(name, icon, wins) {
     this.name = name || "Computer";
-    this.wins = 0;
+    this.wins = wins ||0;
     this.icon = icon || "👾";
     this.fighter = "";
   }
+
   saveWinsToStorage() {
     var stringifyPlayer = JSON.stringify(this);
     if (this.name === "Computer") {
@@ -13,6 +14,7 @@ class Player {
       localStorage.setItem('player', stringifyPlayer);
     }
   }
+
   retrieveWinsFromStorage() {
 
   }

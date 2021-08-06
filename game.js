@@ -42,8 +42,8 @@ class Game {
     this.interval++;
     if (this.interval === 10) {
       clearTimeout(opponentInterval);
-      setTimeout(classicGame, 3000)
       this.classicGame();
+      setTimeout(classicGame, 3000)
     }
   }
   rockVictory() {
