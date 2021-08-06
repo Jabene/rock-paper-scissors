@@ -2,13 +2,13 @@ class Game {
   constructor(playerFighter, fighters) {
     this.classicFighters = [{
       name: "classic-rock",
-      icon: `<img src="./assets/rock-log-in.png">`,
+      icon: `<img src="./assets/player-rock.png">`,
     }, {
       name: "classic-paper",
-      icon: `<img src="./assets/paper-log-in.png">`,
+      icon: `<img src="./assets/player-paper.png">`,
     }, {
       name: "classic-scissors",
-      icon: `<img src="./assets/scissors-log-in.png">`,
+      icon: `<img src="./assets/player-scissors.png">`,
     }];
     this.selectedFighter = playerFighter;
     this.player = currentPlayer;

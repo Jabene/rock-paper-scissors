@@ -100,12 +100,13 @@ function runClassicGame(e) {
   classicGameRunning.classicOpponentFighter();
   hide(document.querySelector('.select-fighter'));
   show(document.querySelector('.fighter-arena'));
+  document.getElementById('instructions').innerText = "Good Luck!";
   opponentInterval = setInterval(function() {classicGameRunning.classicOpponentFighter()}, 250);
 }
 
 function selectFighter(selection) {
   for (var i=0; i<classicGameRunning.classicFighters.length; i++) {
-    if (selection.includes(classicGameRunning.classicFighters[i].name))
+    if (classicGameRunning.classicFighters[i].name.includes(selection))
       document.getElementById('player-fighter').innerHTML = `${classicGameRunning.classicFighters[i].icon}`;
       currentPlayer.fighter = selection;
   }

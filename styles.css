@@ -176,8 +176,8 @@ header {
 }
 
 .game-section > button {
-  height: 30%;
-  width: 20%;
+  height: 40%;
+  width: 35%;
   cursor:pointer;
   background-image: url('./assets/paper-log-in.png');
   background-size: cover;
@@ -193,8 +193,8 @@ header {
 }
 
 .select-fighter > img {
-  width: 25%;
-  height: 25%;
+  width: 30%;
+  height: 40%;
   cursor: pointer;
 }
 
@@ -204,6 +204,9 @@ header {
   width: 100%;
   align-items:center;
   justify-content: space-evenly;
+  background-image: url('./assets/arena.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .fighter-arena > div {
