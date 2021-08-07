@@ -42,16 +42,25 @@
           <p>paper > rock</p>
           <p>scissors > paper</p>
         </button>
-        <button id="other-game">
-          <h3>🪨 Other ✂️</h3>
-          <p>rock > scissors</p>
-          <p>paper > rock</p>
-          <p>scissors > paper</p>
+        <button id="hero-game">
+          <h3>🦸🏻‍♀️ Heros 🦸🏽‍♂️</h3>
+          <p>Superman > Homelander & Goku</p>
+          <p>Homelander > Goku & Hulk</p>
+          <p>Goku > Hulk & Omniman</p>
+          <p>Hulk > Omniman & Superman</p>
+          <p>Omniman > Superman & Homelander</p>
         </button>
-        <section class="hidden select-fighter">
+        <section class="hidden select-fighter" id="character-select">
           <img id="classic-rock" src="./assets/player-rock.png" />
           <img id="classic-paper" src="./assets/player-paper.png" />
           <img id="classic-scissors" src="./assets/player-scissors.png" />
+        </section>
+        <section class="hidden select-hero">
+          <img id="superman" src="./assets/superman.png" />
+          <img id="omniman" src="./assets/omniman.png" />
+          <img id="homelander" src="./assets/homelander.png" />
+          <img id="goku" src="./assets/goku.png" />
+          <img id="hulk" src="./assets/hulk.png" />
         </section>
         <section class="hidden fighter-arena">
           <div class="contestant" id="player-fighter"></div>
@@ -64,6 +73,7 @@
       <p>Computer</p>
       <p id="opponent-wins">Wins: 0</p>
     </aside>
+    <script type="text/javascript" src="otherGame.js"></script>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript" src="main.js"></script>

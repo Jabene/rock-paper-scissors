@@ -1,20 +1,23 @@
 var logInButton = document.getElementById('log-in-button');
 var playerIcon = document.querySelector('#icon-row');
+var heroFighterSelect = document.querySelector('.select-hero');
 var classicFighterSelect = document.querySelector('.select-fighter');
 var classicGameButton = document.getElementById('classic-game');
-var otherGameButton = document.getElementById('other-game');
+var heroGameButton = document.getElementById('hero-game');
 var changeGameButton = document.getElementById('change-game');
 var resetUserButton = document.getElementById('reset-user');
 
 var opponent = new Player();
 var currentPlayer = new Player();
 var classicGameRunning;
+var heroGameRunning;
 var opponentInterval;
 
 playerIcon.onclick = logIn;
 classicGameButton.onclick = classicGame;
 classicFighterSelect.onclick = runClassicGame;
-otherGameButton.onclick = otherGame;
+heroFighterSelect.onclick = runHeroGame;
+heroGameButton.onclick = heroGame;
 changeGameButton.onclick = returningPlayer;
 resetUserButton.onclick = resetData;
 
@@ -56,10 +59,12 @@ function returningPlayer() {
     document.getElementById('users-icon').innerText = currentPlayer.icon;
     document.getElementById('player-wins').innerText = `Wins: ${currentPlayer.wins}`;
     document.getElementById('opponent-wins').innerText = `Wins: ${opponent.wins}`;
+    document.getElementById('instructions').innerText = "Select your game!";
     hide(document.getElementById('log-in'))
     hide(document.querySelector('.select-fighter'))
+    hide(document.querySelector('.select-hero'))
     show(document.getElementById('classic-game'))
-    show(document.getElementById('other-game'))
+    show(document.getElementById('hero-game'))
     show(document.querySelector('#left-aside'))
     show(document.querySelector('#right-aside'))
     show(document.querySelector('#main-section'))
@@ -69,7 +74,6 @@ function returningPlayer() {
 function changeGame() {
   currentPlayer.saveWinsToStorage();
   opponent.saveWinsToStorage();
-  document.getElementById('instructions').innerText = "Choose your game!";
   returningPlayer();
 }
 
@@ -84,14 +88,10 @@ function resetData() {
 
 function classicGame(e) {
   hide(document.getElementById('classic-game'));
-  hide(document.getElementById('other-game'));
+  hide(document.getElementById('hero-game'));
   hide(document.querySelector('.fighter-arena'));
   show(document.querySelector('.select-fighter'));
   document.getElementById('instructions').innerText = "Select your fighter!";
-  document.getElementById('player-wins').innerText = `Wins: ${currentPlayer.wins}`;
-  document.getElementById('opponent-wins').innerText = `Wins: ${opponent.wins}`;
-  currentPlayer.saveWinsToStorage();
-  opponent.saveWinsToStorage();
 }
 
 function runClassicGame(e) {
@@ -133,9 +133,27 @@ function determineWinner(wld) {
   }
 }
 
-function otherGame(e) {
-  e.preventDefault();
-  hide(document.getElementById('classic-game'));
-  hide(document.getElementById('other-game'));
+function heroGame() {  hide(document.getElementById('classic-game'));
+  hide(document.getElementById('hero-game'));
+  hide(document.querySelector('.fighter-arena'));
+  show(document.querySelector('.select-hero'))
   document.getElementById('instructions').innerText = "Select your fighter!";
+}
+
+function runHeroGame(e) {
+  heroGameRunning = new Heros(e.target.id);
+  selectHero(e.target.id);
+  heroGameRunning.heroOpponentFighter();
+  hide(document.querySelector('.select-hero'));
+  show(document.querySelector('.fighter-arena'));
+  document.getElementById('instructions').innerText = "Good Luck!";
+  opponentInterval = setInterval(function() {heroGameRunning.heroOpponentFighter()}, 250);
+}
+
+function selectHero(selection) {
+  for (var i=0; i<heroGameRunning.heroFighters.length; i++) {
+    if (heroGameRunning.heroFighters[i].name.includes(selection))
+      document.getElementById('player-fighter').innerHTML = `${heroGameRunning.heroFighters[i].icon}`;
+      currentPlayer.fighter = selection;
+  }
 }
