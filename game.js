@@ -37,6 +37,7 @@ class Game {
       var randomFighter = this.classicFighters[this.getRandomIndex(this.classicFighters)];
       newIcon = randomFighter.icon
     }
+    
     opponent.fighter = randomFighter;
     displayOpponentChoice(randomFighter.icon);
     this.interval++;

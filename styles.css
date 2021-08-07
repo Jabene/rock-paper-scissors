@@ -173,6 +173,10 @@ header {
   border-color: white;
 }
 
+header > h3 {
+  margin: 0px;
+}
+
 .game-section {
   height:80%;
   width: 100%;
@@ -192,6 +196,12 @@ header {
 .game-section > #classic-game {
   background-image: url('./assets/entrance.jpg');
   background-size: cover;
+}
+
+.game-section > #hero-game {
+  background-image: url('./assets/hero-select.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .select-fighter {
@@ -216,6 +226,30 @@ header {
   width: 35%;
   height: 45%;
 }
+
+.select-hero {
+  width:100%;
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: url('./assets/hero-select.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.select-hero > img {
+  width: 15%;
+  height: 20%;
+  cursor: pointer;
+  filter: drop-shadow(20px 10px 4px black);
+}
+
+.select-hero >img:hover {
+  width: 20%;
+  height: 25%;
+}
+
 
 .fighter-arena {
   display:flex;
