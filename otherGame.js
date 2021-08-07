@@ -31,7 +31,7 @@ class Heros {
       determineWinner(this.homelanderVictory());
     } else if (this.player.fighter === "goku") {
       determineWinner(this.gokuVictory());
-    } else if (this.player.fighter === "hulkman") {
+    } else if (this.player.fighter === "hulk") {
       determineWinner(this.hulkVictory());
     }
   }
@@ -60,14 +60,18 @@ class Heros {
   omnimanVictory() {
     if (opponent.fighter.name === "omniman") {
       return "draw"
-    } else if (opponent.fighter.name === "goku" || "hulk") {
+    } else if (opponent.fighter.name === "goku") {
+      return "lose"
+    } else if (opponent.fighter.name === "hulk") {
       return "lose"
     } else {
       return "win"
     }
   }
   supermanVictory() {
-    if (opponent.fighter.name === "homelander" || "goku") {
+    if (opponent.fighter.name === "homelander") {
+      return "win"
+    } else if (opponent.fighter.name === "goku") {
       return "win"
     } else if (opponent.fighter.name === "superman") {
       return "draw"
@@ -76,9 +80,14 @@ class Heros {
     }
   }
   homelanderVictory() {
-    if (opponent.fighter.name === "superman" || "omniman") {
+
+    if (opponent.fighter.name === "superman") {
       return "lose"
-    } else if (opponent.fighter.name === "goku" || "hulk") {
+    } else if (opponent.fighter.name === "omniman") {
+      return "lose"
+    } else if (opponent.fighter.name === "goku") {
+      return "win"
+    } else if (opponent.fighter.name === "hulk") {
       return "win"
     } else {
       return "draw"
@@ -87,16 +96,21 @@ class Heros {
   gokuVictory() {
     if (opponent.fighter.name === "goku") {
       return "draw"
-    } else if (opponent.fighter.name === "superman" || "homelander") {
+    } else if (opponent.fighter.name === "superman") {
+      return "lose"
+    } else if (opponent.fighter.name === "homelander") {
       return "lose"
     } else {
       return "win"
     }
   }
   hulkVictory() {
+    console.log(opponent.fighter.name);
     if (opponent.fighter.name === "hulk") {
       return "draw"
-    } else if (opponent.fighter.name === "homelander" || "goku") {
+    } else if (opponent.fighter.name === "homelander") {
+      return "lose"
+    } else if (opponent.fighter.name === "goku") {
       return "lose"
     } else {
       return "win"
