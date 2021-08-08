@@ -184,13 +184,29 @@ header > h3 {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  background-image: url('./assets/sky.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
 
 .game-section > button {
   height: 40%;
   width: 35%;
   cursor:pointer;
-  font-size: 1.25em;
+  font-size: 1.5em;
+  text-shadow:
+         0.07em 0 black,
+         0 0.07em black,
+         -0.07em 0 black,
+         0 -0.07em black;
+  color: yellow;
+}
+
+.game-section > button:hover {
+  height: 45%;
+  width: 40%;
+  filter: drop-shadow(20px 10px 4px black);
 }
 
 .game-section > #classic-game {
@@ -258,6 +274,17 @@ header > h3 {
   align-items:center;
   justify-content: space-evenly;
   background-image: url('./assets/arena.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-arena {
+  display:flex;
+  height: 100%;
+  width: 100%;
+  align-items:center;
+  justify-content: space-evenly;
+  background-image: url('./assets/hero-arena.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
