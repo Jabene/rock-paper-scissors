@@ -190,7 +190,7 @@ header > h3 {
 
 }
 
-.game-section > button {
+.game-button {
   height: 40%;
   width: 35%;
   cursor:pointer;
@@ -201,6 +201,10 @@ header > h3 {
          -0.07em 0 black,
          0 -0.07em black;
   color: yellow;
+}
+
+.game-button > p {
+  margin: .25em;
 }
 
 .game-section > button:hover {
