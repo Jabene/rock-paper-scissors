@@ -68,6 +68,7 @@ function returningPlayer() {
     show(document.querySelector('#left-aside'))
     show(document.querySelector('#right-aside'))
     show(document.querySelector('#main-section'))
+    hide(document.getElementById('change-game'));
   }
 }
 
@@ -92,15 +93,22 @@ function classicGame(e) {
   hide(document.querySelector('.fighter-arena'));
   show(document.querySelector('.select-fighter'));
   document.getElementById('instructions').innerText = "Select your fighter!";
+  document.getElementById('arena').classList.remove('hero-arena')
+  document.getElementById('arena').classList.add('arena')
+  show(document.getElementById('change-game'));
 }
 
 function runClassicGame(e) {
+  if (!e.target.id) {
+    return
+  };
   classicGameRunning = new Game(e.target.id);
   selectFighter(e.target.id);
   classicGameRunning.classicOpponentFighter();
   hide(document.querySelector('.select-fighter'));
   show(document.querySelector('.fighter-arena'));
   document.getElementById('instructions').innerText = "Good Luck!";
+  hide(document.getElementById('change-game'));
   opponentInterval = setInterval(function() {classicGameRunning.classicOpponentFighter()}, 250);
 }
 
@@ -138,14 +146,21 @@ function heroGame() {  hide(document.getElementById('classic-game'));
   hide(document.querySelector('.fighter-arena'));
   show(document.querySelector('.select-hero'))
   document.getElementById('instructions').innerText = "Select your fighter!";
+  show(document.getElementById('change-game'));
+  document.getElementById('arena').classList.add('hero-arena')
+  document.getElementById('arena').classList.remove('arena')
 }
 
 function runHeroGame(e) {
+  if (!e.target.id) {
+    return
+  };
   heroGameRunning = new Heros(e.target.id);
   selectHero(e.target.id);
   heroGameRunning.heroOpponentFighter();
   hide(document.querySelector('.select-hero'));
   show(document.querySelector('.fighter-arena'));
+  hide(document.getElementById('change-game'));
   document.getElementById('instructions').innerText = "Good Luck!";
   opponentInterval = setInterval(function() {heroGameRunning.heroOpponentFighter()}, 250);
 }

@@ -27,8 +27,8 @@
       <p id="users-icon"></p>
       <p id="users-name">Human</p>
       <p id="player-wins">Wins: 0</p>
-      <button id="change-game">Change Game?</button>
       <button id="reset-user">Reset Progress?</button>
+      <button class="hidden" id="change-game">Change Game?</button>
     </aside>
     <main class="hidden" id="main-section">
       <header>
@@ -50,7 +50,7 @@
           <p>Hulk > Omniman & Superman</p>
           <p>Omniman > Superman & Homelander</p>
         </button>
-        <section class="hidden select-fighter" id="character-select">
+        <section class="hidden select-fighter">
           <img id="classic-rock" src="./assets/player-rock.png" />
           <img id="classic-paper" src="./assets/player-paper.png" />
           <img id="classic-scissors" src="./assets/player-scissors.png" />
@@ -62,7 +62,7 @@
           <img id="goku" src="./assets/goku.png" />
           <img id="hulk" src="./assets/hulk.png" />
         </section>
-        <section class="hidden fighter-arena">
+        <section class="hidden fighter-arena" id="arena">
           <div class="contestant" id="player-fighter"></div>
           <div class="contestant" id="opponent-fighter"></div>
         </section>
