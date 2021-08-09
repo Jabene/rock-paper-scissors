@@ -124,6 +124,11 @@ aside > p {
   margin: 2vw 0em 0em 0em;
 }
 
+aside > a {
+  margin: 2vw 0em 0em 0em;
+  text-decoration: none;
+}
+
 aside > button {
   width: 50%;
   height: 5%;
